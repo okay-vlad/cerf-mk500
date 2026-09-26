@@ -180,6 +180,11 @@
       "family_id": "arm1136"
     },
     {
+      "id": "tegra_apx_2600",
+      "name": "NVIDIA Tegra APX 2600",
+      "family_id": "arm1136"
+    },
+    {
       "id": "imx51",
       "name": "Freescale i.MX51",
       "family_id": "cortex_a8"
@@ -689,6 +694,37 @@
       "lcd_panel_size": {
         "width": 240,
         "height": 320
+      },
+      "ga_color_depth": 16,
+      "rom_placing_mode": "flat_container"
+    },
+    {
+      "id": "zune_hd",
+      "name": "Microsoft Zune HD",
+      "short_name": "Zune HD",
+      "supported": true,
+      "soc_id": "tegra_apx_2600",
+      "operating_system_ids": [
+        "windows_ce_6"
+      ],
+      "device_features": [
+        {
+          "feature_id": "touch",
+          "supported": false
+        },
+        {
+          "feature_id": "sound",
+          "supported": false
+        },
+        {
+          "feature_id": "guest_additions",
+          "supported": false
+        }
+      ],
+      "notes": [],
+      "lcd_panel_size": {
+        "width": 480,
+        "height": 272
       },
       "ga_color_depth": 16,
       "rom_placing_mode": "flat_container"

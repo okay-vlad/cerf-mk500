@@ -71,7 +71,13 @@ function Build-LauncherStub([string]$python, [string]$outDir) {
         Write-Host "[LAUNCHER] FAILED! vswhere.exe not found at $vswhere."
         return $null
     }
-    $vs = & $vswhere -latest -prerelease -property installationPath | Select-Object -First 1
+    # -products * so a BuildTools-only install is found; without it vswhere
+    # -latest returns nothing on machines with no full VS and $vs becomes null.
+    $vs = & $vswhere -latest -prerelease -products * -property installationPath | Select-Object -First 1
+    if (-not $vs) {
+        Write-Host "[LAUNCHER] FAILED! no Visual Studio / BuildTools install found by vswhere."
+        return $null
+    }
     $vcvars = Join-Path $vs "VC\Auxiliary\Build\vcvars32.bat"
     if (-not (Test-Path $vcvars)) {
         Write-Host "[LAUNCHER] FAILED! vcvars32.bat not found under $vs."
